@@ -1,4 +1,4 @@
-package org.example.estacionamento_aula;
+package org.example;
 
 /**
  * Hello world!
