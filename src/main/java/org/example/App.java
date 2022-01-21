@@ -91,7 +91,7 @@ public class App
         for (int i = 0; i < placas.length; i++) {
             if(null!=placas[i]){
                 gc.setTimeInMillis(tempos[i]);
-                System.out.printf("Placa %s \t Hora de entrada: %tD%n %tl:%tM  ", placas[i],gc,gc,gc);
+                System.out.printf("Placa %s \t Hora de entrada: %tD %tl:%tM  ", placas[i],gc,gc,gc);
             }
         }
         System.out.printf("Relatório de veículos %n %s ",saida);
@@ -111,16 +111,14 @@ public class App
 
         double valorCobrado = 0.0d;
 
+
         if(tempoMinutos>5){
             valorCobrado = 4.0d;
-
-            if(horas>1){
-                valorCobrado += (horas * 6.0d);
-                Long resto = tempoMinutos % 60;
-                if(resto > 0) {
-                    valorCobrado += 6.00;
+            if(horas>=1) {
+                valorCobrado += (horas - 1) * 6.0d;
+                if (tempoMinutos % 60 > 0) {
+                    valorCobrado += 6.0d;
                 }
-
             }
         }
 
@@ -128,7 +126,7 @@ public class App
         System.out.printf("Saída do veículo de placa %s . " +
                 "Tempo no estabelecimento . Valor a ser cobrado: %.2f %n", placas[indice],valorCobrado);
 
-        String retorno = String.format("Placa %s \t tempo permanencia: %d minutos \t valor cobrado: %.2f %n",
+        String retorno = String.format("Placa %s - tempo permanencia: %d minutos - valor cobrado: %.2f %n",
                 placas[indice],tempoMinutos,valorCobrado);
         placas[indice] = null;
         tempos[indice] = null;
